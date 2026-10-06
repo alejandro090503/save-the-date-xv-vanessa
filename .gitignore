@@ -1,3 +1,6 @@
 _raw/
 .vercel
 .claude/
+
+.vercel
+.env*
