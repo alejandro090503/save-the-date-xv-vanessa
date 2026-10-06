@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Save the Date · XV Vanessa Aileen</title>
+<meta name="description" content="Guarda la fecha: mis XV años, sábado 16 de enero de 2027 · Tultitlán, Estado de México.">
+<meta property="og:title" content="Save the Date · XV Vanessa Aileen">
+<meta property="og:description" content="Érase una vez… mis XV años. Sábado 16 de enero de 2027.">
+<meta property="og:image" content="https://save-the-date-xv-vanessa.vercel.app/og-image.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f6dcd8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&family=Jost:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="corona.webp">
+<style>
+:root{
+  --blush:#ffc3c2;--peach:#ffc5ab;--cream:#fff4e4;--pink:#ffa1dd;--rose:#ffd1c9;
+  --rg:#B76E79;--rg-hi:#f3c7c0;--rg-deep:#7e3f4a;--champ:#F7E7CE;--champ-deep:#c9a77a;
+  --ink:#4e2430;--ink-soft:#6e3a47;--flora:#e0569a;--prim:#4f8fe0;
+  --metal:linear-gradient(100deg,#7e3f4a 0%,#c98a90 22%,#f6d5cc 40%,#B76E79 55%,#f3c7c0 70%,#8a4552 100%);
+  --champ-metal:linear-gradient(100deg,#a8835a,#f7e7ce 35%,#fffaf0 50%,#d9bf98 68%,#a8835a);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:'Cormorant Garamond',serif;font-weight:500;font-size:19px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden;height:100svh}
+img{display:block;max-width:100%}
+.metal{background:var(--metal);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sweep 6s ease-in-out infinite}
+@keyframes sweep{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.eyebrow{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.28em;text-transform:uppercase;font-size:.78rem;color:var(--rg-deep)}
+.hair{width:120px;height:1px;margin:18px auto;background:linear-gradient(90deg,transparent,var(--rg),transparent)}
+#sparks{position:fixed;inset:0;pointer-events:none;z-index:40}
+
+/* ============ LIBRO ============ */
+#libro{position:fixed;inset:0;z-index:50;display:grid;place-items:center;
+  background:radial-gradient(ellipse at 50% 40%,#fff3ec 0%,#f7d9d6 55%,#e7b5b6 100%);transition:opacity 1.1s ease,visibility 1.1s}
+#libro.gone{opacity:0;visibility:hidden}
+#libro .tap{position:absolute;bottom:max(7vh,34px);left:0;right:0;text-align:center;font-family:'Cinzel',serif;font-weight:600;letter-spacing:.3em;font-size:.8rem;color:var(--rg-deep);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.45}}
+.book{position:relative;width:min(74vw,330px);transform-origin:center;aspect-ratio:3/4.2;perspective:1800px;cursor:pointer;transition:transform 1.4s cubic-bezier(.6,.05,.3,1)}
+.book.open{transform:scale(.62) translateX(50%)}
+.book.zoom{transform:scale(2.4) translateX(50%);opacity:.0;transition:transform 1.3s cubic-bezier(.7,0,.3,1),opacity 1.1s ease .2s;transition:transform 1.3s cubic-bezier(.7,0,.3,1)}
+.page{position:absolute;inset:0;border-radius:4px 12px 12px 4px;overflow:hidden;
+  background:linear-gradient(90deg,#efe0cc 0%,#fff9ef 8%,#fffaf2 100%);box-shadow:0 18px 40px rgba(94,40,52,.28);display:grid;place-items:center;text-align:center;padding:10% 9%}
+.page::before{content:"";position:absolute;inset:7%;border:1px solid rgba(183,110,121,.55);border-radius:4px}
+.page img{width:78%;margin:0 auto 6px}
+.page p{font-family:'Cinzel Decorative',serif;font-size:clamp(.9rem,3.6vw,1.15rem);color:var(--rg-deep)}
+.page-stack{position:absolute;inset:3px -5px -4px 3px;border-radius:4px 12px 12px 4px;background:repeating-linear-gradient(0deg,#f4e7d4 0 2px,#fff8ec 2px 4px);box-shadow:0 14px 30px rgba(94,40,52,.25)}
+.cover{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transition:transform 1.6s cubic-bezier(.6,.05,.25,1)}
+.book.open .cover{transform:rotateY(-178deg)}
+.cover-face,.cover-back{position:absolute;inset:0;border-radius:4px 12px 12px 4px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.cover-face{background:
+  radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.28),transparent 55%),
+  linear-gradient(135deg,#c97a86 0%,#a4525f 45%,#7e3f4a 100%);
+  box-shadow:inset 6px 0 10px rgba(0,0,0,.25),inset -2px 0 0 rgba(255,255,255,.15),0 22px 50px rgba(94,40,52,.38);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12% 10%;color:var(--champ)}
+.cover-face::before{content:"";position:absolute;inset:6%;border:2px solid transparent;border-radius:6px;
+  border-image:linear-gradient(135deg,#f7e7ce,#c9a77a,#fffaf0,#b98b5f,#f7e7ce) 1}
+.cover-face::after{content:"";position:absolute;inset:8.5%;border:1px solid rgba(247,231,206,.55);border-radius:4px}
+.spine{position:absolute;left:0;top:0;bottom:0;width:7%;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(255,255,255,.08),rgba(0,0,0,.12));border-radius:4px 0 0 4px}
+.cover-face .corona{width:42%;filter:drop-shadow(0 4px 8px rgba(60,20,30,.45));animation:floaty 4s ease-in-out infinite}
+@keyframes floaty{50%{transform:translateY(-6px)}}
+.cover-face h1{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(1.25rem,5.6vw,1.75rem);line-height:1.25;margin-top:14px;
+  background:var(--champ-metal);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sweep 5s ease-in-out infinite}
+.cover-face .nm{font-family:'Great Vibes',cursive;font-size:clamp(2.1rem,10vw,3rem);line-height:1.1;margin-top:8px;
+  background:var(--champ-metal);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sweep 5s ease-in-out infinite}
+.cover-face small{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.32em;font-size:.68rem;margin-top:10px;color:var(--champ)}
+.cover-face .rose-c{position:absolute;width:44%;bottom:-2%;right:-6%;transform:rotate(-12deg);opacity:.95;pointer-events:none}
+.cover-back{transform:rotateY(180deg);background:linear-gradient(90deg,#fff9ef,#efe0cc);box-shadow:inset -8px 0 14px rgba(120,80,60,.15);display:grid;place-items:center;padding:14%}
+.cover-back p{font-family:'Great Vibes',cursive;font-size:1.6rem;color:var(--rg);text-align:center;line-height:1.3}
+
+/* ============ SECCIONES ============ */
+section{position:relative;padding:min(15vh,130px) 22px;text-align:center;overflow:hidden}
+.wrap{max-width:560px;margin:0 auto;position:relative;z-index:2}
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1.1s ease,transform 1.1s ease}
+.rv.in{opacity:1;transform:none}
+
+/* hero */
+.hero{min-height:100svh;padding-top:min(10vh,80px);padding-bottom:40px;
+  background:linear-gradient(180deg,rgba(255,244,228,.15),rgba(255,244,228,.0) 40%,rgba(255,244,228,.9) 92%,var(--cream)),url('bg-castillo-nubes.jpg') center top/cover}
+.hero .eyebrow{color:var(--rg-deep)}
+.std{filter:drop-shadow(0 1px 0 #fff);font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(1.9rem,8.5vw,3rem);line-height:1.15;margin:10px 0 4px}
+.hero .name{font-family:'Great Vibes',cursive;font-size:clamp(3.2rem,16vw,5.6rem);line-height:1.12;min-height:1.1em;
+  filter:drop-shadow(0 2px 0 rgba(255,255,255,.8)) drop-shadow(0 0 10px rgba(255,255,255,.7))}
+.hero .name .w{display:block;white-space:nowrap}.hero .name span{display:inline-block;background:var(--metal);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sweep 6s ease-in-out infinite;padding:0 .04em;opacity:0;transform:translateY(12px) scale(.9);transition:opacity .5s,transform .5s}
+.hero .name span.on{opacity:1;transform:none}
+.hero .sub{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.24em;font-size:.95rem;color:var(--ink);margin-top:4px}
+.stage{position:relative;height:min(62vh,520px);margin:18px auto 0;max-width:460px}
+.stage .aurora{position:absolute;bottom:0;left:50%;height:96%;width:auto;transform:translateX(-50%);filter:drop-shadow(0 12px 18px rgba(126,63,74,.28));animation:sway 6s ease-in-out infinite;transform-origin:bottom center}
+@keyframes sway{0%,100%{transform:translateX(-50%) rotate(-1deg)}50%{transform:translateX(-50%) rotate(1.2deg)}}
+.stage .ramo{position:absolute;bottom:-6%;width:62%;opacity:.98}
+.stage .ramo.l{left:-14%;transform:scaleX(-1) rotate(8deg)}
+.stage .ramo.r{right:-14%;transform:rotate(8deg)}
+.date-pill{display:inline-flex;gap:14px;align-items:center;margin-top:22px;font-family:'Jost',sans-serif;font-weight:600;letter-spacing:.14em;font-size:1rem;color:var(--ink);text-transform:uppercase}
+.date-pill i{width:5px;height:5px;transform:rotate(45deg);background:var(--rg)}
+
+/* verso */
+.verso{background:linear-gradient(180deg,var(--cream),#fdebe6)}
+.verso .drop{font-family:'Cormorant Garamond',serif;font-size:1.32rem;line-height:1.6;color:var(--ink)}
+.verso .drop::first-letter{font-family:'Cinzel Decorative',serif;font-weight:700;float:left;font-size:4.2rem;line-height:.85;padding:6px 10px 0 0;color:var(--rg)}
+.verso .firma{font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--rg);margin-top:14px}
+.rueca{width:min(46vw,210px);margin:26px auto 0;filter:drop-shadow(0 8px 14px rgba(126,63,74,.18))}
+
+/* calendario */
+.cal{background:linear-gradient(180deg,#fdebe6,#fff4e4)}
+.cal .card{position:relative;background:rgba(255,250,243,.92);border-radius:200px 200px 18px 18px;padding:72px 22px 30px;margin-top:24px;
+  box-shadow:0 20px 50px rgba(126,63,74,.14);border:1px solid rgba(183,110,121,.35)}
+.cal .card::before{content:"";position:absolute;inset:9px;border-radius:190px 190px 12px 12px;border:1px solid rgba(201,167,122,.6)}
+.cal .card .crown-top{position:absolute;top:-34px;left:50%;width:96px;transform:translateX(-50%);filter:drop-shadow(0 6px 8px rgba(126,63,74,.25))}
+.cal .mes{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:1.7rem}
+.cal .anio{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.4em;color:var(--rg-deep);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px 2px;margin-top:20px;font-family:'Jost',sans-serif;font-weight:500;font-size:1.02rem;color:var(--ink)}
+.grid b{font-family:'Cinzel',serif;font-weight:600;font-size:.74rem;letter-spacing:.08em;color:var(--rg-deep);padding-bottom:6px}
+.grid span{height:40px;display:grid;place-items:center;position:relative}
+.grid .dia16{color:#fff;font-weight:600;z-index:1}
+.grid .dia16::before{content:"";position:absolute;width:42px;height:42px;border-radius:50%;z-index:-1;
+  background:radial-gradient(circle at 35% 30%,#f3c7c0,#B76E79 60%,#7e3f4a);box-shadow:0 0 0 3px rgba(255,255,255,.9),0 0 0 4px var(--rg),0 0 22px 6px rgba(255,161,221,.6);animation:beat 2.2s ease-in-out infinite}
+.grid .dia16::after{content:"";position:absolute;top:-17px;width:26px;height:18px;background:url('corona.webp') center/contain no-repeat}
+@keyframes beat{50%{transform:scale(1.1)}}
+.cal .when{margin-top:22px;font-family:'Jost',sans-serif;font-weight:600;font-size:1.06rem;letter-spacing:.06em;color:var(--ink)}
+.cal .where{font-family:'Jost',sans-serif;font-weight:500;font-size:1rem;color:var(--ink-soft)}
+
+/* countdown */
+.cd{color:#fff;background:linear-gradient(180deg,var(--cream) 0,rgba(255,244,228,0) 7%,rgba(255,244,228,0) 93%,var(--cream) 100%),
+  radial-gradient(ellipse at 50% 45%,rgba(52,20,46,.62),rgba(52,20,46,.38) 70%),url('bg-bosque.jpg') center/cover;padding:min(20vh,170px) 22px}
+.cd .eyebrow{color:var(--champ)}
+.cd h2{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(1.6rem,7vw,2.3rem);line-height:1.2;
+  background:var(--champ-metal);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sweep 5s ease-in-out infinite;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.units{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:30px}
+.unit{position:relative;aspect-ratio:1/1.25;border-radius:60px 60px 10px 10px;background:linear-gradient(180deg,rgba(255,244,228,.16),rgba(255,195,194,.1));
+  border:1px solid rgba(247,231,206,.75);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 24px rgba(255,161,221,.25)}
+.unit .n{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(1.6rem,7.4vw,2.4rem);line-height:1;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.45)}
+.unit .l{font-family:'Jost',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--champ);margin-top:8px}
+.cd .frase{margin-top:30px;font-style:italic;font-size:1.25rem;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+
+/* hadas */
+.hadas{background:linear-gradient(180deg,var(--cream),#fde4e2)}
+.hadas .vuelo{position:relative;height:200px;max-width:440px;margin:0 auto 10px}
+.hada{position:absolute;width:30%;height:auto;filter:drop-shadow(0 8px 10px rgba(80,40,60,.18))}
+.hada.f{left:0;top:10px;animation:fly1 5s ease-in-out infinite}
+.hada.a{left:35%;top:60px;animation:fly2 5.6s ease-in-out infinite}
+.hada.p{right:0;top:0;animation:fly1 6s ease-in-out infinite reverse}
+@keyframes fly1{50%{transform:translate(6px,-14px) rotate(-4deg)}}
+@keyframes fly2{50%{transform:translate(-8px,-10px) rotate(4deg)}}
+.hadas h2{font-family:'Great Vibes',cursive;font-size:clamp(2.6rem,12vw,3.6rem);line-height:1.1}
+.hadas p.txt{font-size:1.25rem;margin-top:10px}
+.colores{display:flex;justify-content:center;gap:14px;margin-top:22px}
+.colores button{width:52px;height:52px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--rg),0 6px 14px rgba(126,63,74,.2);cursor:pointer;transition:transform .3s}
+.colores button:active{transform:scale(.9)}
+.colores .pk{background:radial-gradient(circle at 35% 30%,#ffd1e8,#ffa1dd 55%,#e0569a)}
+.colores .bl{background:radial-gradient(circle at 35% 30%,#d8e9ff,#8fbaf2 55%,#4f8fe0)}
+.colores-l{font-family:'Jost',sans-serif;font-weight:500;font-size:.95rem;color:var(--ink-soft);margin-top:10px}
+.pronto{margin-top:34px;padding:18px 20px;border-top:1px solid rgba(183,110,121,.4);border-bottom:1px solid rgba(183,110,121,.4);font-family:'Jost',sans-serif;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.92rem;color:var(--ink)}
+.castillo-fin{width:min(60vw,260px);margin:34px auto 0;opacity:.95}
+
+footer{padding:34px 20px 46px;text-align:center;background:#fde4e2;font-family:'Jost',sans-serif;font-weight:500;font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+footer a{color:var(--rg-deep);text-decoration:none}
+
+/* música: corona */
+#music-btn{position:fixed;right:16px;bottom:18px;z-index:45;width:64px;height:64px;border-radius:50%;border:1px solid rgba(183,110,121,.6);cursor:pointer;
+  background:radial-gradient(circle at 35% 30%,#fff9f2,#fbe0dc);box-shadow:0 8px 22px rgba(126,63,74,.25);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .6s}
+#music-btn.show{opacity:1;pointer-events:auto}
+#music-btn img{width:40px;transition:transform .4s}
+#music-btn.playing img{animation:bob 1.6s ease-in-out infinite}
+#music-btn::after{content:"";position:absolute;width:3px;height:44px;background:var(--rg-deep);transform:rotate(45deg);border-radius:2px;transition:opacity .3s}
+#music-btn.playing::after{opacity:0}
+@keyframes bob{50%{transform:translateY(-3px) rotate(-6deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="locked">
+<canvas id="sparks"></canvas>
+
+<!-- LIBRO DE CUENTOS (portada) -->
+<div id="libro" role="button" aria-label="Abrir el libro">
+  <div class="book" id="book">
+    <div class="page-stack"></div>
+    <div class="page">
+      <div>
+        <img src="castillo.webp" alt="">
+        <p>…y así comienza mi historia</p>
+      </div>
+    </div>
+    <div class="cover">
+      <div class="cover-face">
+        <div class="spine"></div>
+        <img class="corona" src="corona.webp" alt="">
+        <h1>Érase una vez</h1>
+        <div class="nm">Vanessa</div>
+        <small>MIS XV AÑOS</small>
+        <img class="rose-c" src="rosas-ramo.webp" alt="">
+      </div>
+      <div class="cover-back"><p>Una vez en un sueño…</p></div>
+    </div>
+  </div>
+  <div class="tap">TOCA PARA ABRIR EL CUENTO</div>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Guarda la fecha</div>
+      <div class="std metal">Save the Date</div>
+      <div class="name" id="nombre" aria-label="Vanessa Aileen"></div>
+      <div class="sub">MIS XV AÑOS</div>
+      <div class="stage">
+        <img class="ramo l" src="rosas-ramo.webp" alt="">
+        <img class="aurora" src="aurora.webp" alt="Princesa Aurora">
+        <img class="ramo r" src="rosas-ramo.webp" alt="">
+      </div>
+      <div class="date-pill"><span>16</span><i></i><span>Enero</span><i></i><span>2027</span></div>
+    </div>
+  </section>
+
+  <section class="verso">
+    <div class="wrap rv">
+      <div class="eyebrow">Capítulo XV</div>
+      <div class="hair"></div>
+      <p class="drop">Como en los cuentos que leía de niña, llega el capítulo que tanto soñé. Las hadas ya preparan su magia, el castillo enciende sus luces y yo quiero que tú seas parte de esta historia.</p>
+      <div class="firma">Vanessa Aileen</div>
+      <img class="rueca" src="rueca.webp" alt="">
+    </div>
+  </section>
+
+  <section class="cal">
+    <div class="wrap rv">
+      <div class="eyebrow">Aparta este día</div>
+      <div class="card">
+        <img class="crown-top" src="corona.webp" alt="">
+        <div class="mes metal">Enero</div>
+        <div class="anio">2027</div>
+        <div class="grid" id="grid"></div>
+        <div class="hair"></div>
+        <div class="when">Sábado 16 de enero de 2027</div>
+        <div class="where">Tultitlán, Estado de México</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cd">
+    <div class="wrap rv">
+      <div class="eyebrow">El hechizo se cumple en</div>
+      <div class="hair" style="background:linear-gradient(90deg,transparent,#f7e7ce,transparent)"></div>
+      <h2>Faltan</h2>
+      <div class="units">
+        <div class="unit"><div class="n" id="d">--</div><div class="l">Días</div></div>
+        <div class="unit"><div class="n" id="h">--</div><div class="l">Horas</div></div>
+        <div class="unit"><div class="n" id="m">--</div><div class="l">Min</div></div>
+        <div class="unit"><div class="n" id="s">--</div><div class="l">Seg</div></div>
+      </div>
+      <p class="frase">antes de que el reloj marque la medianoche del cuento</p>
+    </div>
+  </section>
+
+  <section class="hadas">
+    <div class="wrap rv">
+      <div class="vuelo">
+        <img class="hada f" src="flora.webp" alt="Flora">
+        <img class="hada a" src="fauna.webp" alt="Fauna">
+        <img class="hada p" src="primavera.webp" alt="Primavera">
+      </div>
+      <h2 class="metal">¡Rosa o azul!</h2>
+      <p class="txt">Flora y Primavera no se ponen de acuerdo con el vestido. Toca un color y llena el cielo de magia.</p>
+      <div class="colores">
+        <button class="pk" data-c="pk" aria-label="Magia rosa de Flora"></button>
+        <button class="bl" data-c="bl" aria-label="Magia azul de Primavera"></button>
+      </div>
+      <div class="colores-l">Rosa de Flora · Azul de Primavera</div>
+      <div class="pronto">La invitación formal llegará pronto</div>
+      <img class="castillo-fin" src="castillo.webp" alt="">
+    </div>
+  </section>
+</main>
+
+<footer>Diseño por <a href="https://www.instagram.com/elysium.invitaciones" target="_blank" rel="noopener">@elysium.invitaciones</a></footer>
+
+<audio id="bg-music" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/xv-vanessa-aileen-de-la-rosa/cancion.mp3" preload="none" loop></audio>
+<button id="music-btn" aria-label="Música"><img src="corona.webp" alt=""></button>
+
+<script>
+(function(){
+  var audio=document.getElementById('bg-music'),mb=document.getElementById('music-btn');
+  function setPlay(p){mb.classList.toggle('playing',p)}
+  mb.addEventListener('click',function(){ if(audio.paused){audio.play().then(function(){setPlay(true)}).catch(function(){})} else {audio.pause();setPlay(false)} });
+
+  /* ---- chispas de hadas (rosa Flora / azul Primavera) ---- */
+  var cv=document.getElementById('sparks'),cx=cv.getContext('2d'),P=[],dpr=Math.min(devicePixelRatio||1,2);
+  function rs(){cv.width=innerWidth*dpr;cv.height=innerHeight*dpr}rs();addEventListener('resize',rs);
+  var COL={pk:['#ffa1dd','#ff7fc4','#ffd1e8','#f7e7ce'],bl:['#8fbaf2','#5fa0ff','#d8e9ff','#f7e7ce'],mix:['#ffa1dd','#8fbaf2','#f7e7ce','#ffd1c9']};
+  function burst(x,y,n,pal){for(var i=0;i<n;i++){var a=Math.random()*6.283,v=1+Math.random()*4;P.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-1.5,l:1,s:1.5+Math.random()*3,c:COL[pal][i%4],st:Math.random()<.35})}}
+  var ambient=0;
+  function star(x,y,r){cx.beginPath();for(var i=0;i<8;i++){var rr=i%2?r*.38:r,a=i*Math.PI/4;cx.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}cx.closePath();cx.fill()}
+  function loop(){cx.setTransform(dpr,0,0,dpr,0,0);cx.clearRect(0,0,innerWidth,innerHeight);
+    if(ambient&&Math.random()<.18){P.push({x:Math.random()*innerWidth,y:innerHeight+5,vx:(Math.random()-.5)*.4,vy:-(.4+Math.random()*.8),l:1,s:1+Math.random()*2.2,c:COL.mix[(Math.random()*4)|0],st:Math.random()<.4,amb:1})}
+    for(var i=P.length-1;i>=0;i--){var p=P[i];p.x+=p.vx;p.y+=p.vy;if(!p.amb){p.vy+=.05;p.vx*=.98}p.l-=p.amb?.003:.012;
+      if(p.l<=0){P.splice(i,1);continue}cx.globalAlpha=Math.max(p.l,0);cx.fillStyle=p.c;cx.shadowColor=p.c;cx.shadowBlur=8;
+      if(p.st)star(p.x,p.y,p.s*1.8);else{cx.beginPath();cx.arc(p.x,p.y,p.s,0,6.283);cx.fill()}}
+    cx.globalAlpha=1;requestAnimationFrame(loop)}
+  loop();
+
+  document.querySelectorAll('.colores button').forEach(function(b){b.addEventListener('click',function(e){
+    var r=b.getBoundingClientRect(),c=b.dataset.c;burst(r.left+r.width/2,r.top+r.height/2,60,c);
+    var col=c==='pk'?'#ffa1dd':'#8fbaf2';document.querySelector('.hadas h2').style.filter='drop-shadow(0 0 14px '+col+')';
+  })});
+
+  /* ---- nombre letra por letra ---- */
+  var nm=document.getElementById('nombre'),txt='Vanessa Aileen';
+  txt.split(' ').forEach(function(w,wi){var W=document.createElement('div');W.className='w';w.split('').forEach(function(ch){var s=document.createElement('span');s.textContent=ch;W.appendChild(s)});nm.appendChild(W)});
+  function writeName(){[].forEach.call(nm.querySelectorAll('span'),function(s,i){setTimeout(function(){s.classList.add('on');if(i%3===0){var r=s.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,6,i%2?'bl':'pk')}},i*120)})}
+
+  /* ---- abrir libro ---- */
+  var libro=document.getElementById('libro'),book=document.getElementById('book'),opened=false;
+  libro.addEventListener('click',function(){ if(opened)return;opened=true;
+    audio.play().then(function(){setPlay(true)}).catch(function(){});
+    var r=book.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,70,'mix');
+    book.classList.add('open');libro.querySelector('.tap').style.opacity=0;
+    setTimeout(function(){book.classList.add('zoom')},2100);
+    setTimeout(function(){libro.classList.add('gone');document.body.classList.remove('locked');mb.classList.add('show');ambient=1;writeName()},2900);
+    setTimeout(function(){libro.remove()},4200);
+  });
+
+  /* ---- calendario enero 2027 (1 = viernes) ---- */
+  var g=document.getElementById('grid');['D','L','M','M','J','V','S'].forEach(function(d){var b=document.createElement('b');b.textContent=d;g.appendChild(b)});
+  for(var i=0;i<5;i++)g.appendChild(document.createElement('span'));
+  for(var d=1;d<=31;d++){var s=document.createElement('span');s.textContent=d;if(d===16)s.className='dia16';g.appendChild(s)}
+
+  /* ---- countdown ---- */
+  var T=new Date('2027-01-16T15:50:00-06:00').getTime();
+  function pad(n){return n<10?'0'+n:n}
+  function tick(){var x=Math.max(0,T-Date.now());document.getElementById('d').textContent=Math.floor(x/864e5);document.getElementById('h').textContent=pad(Math.floor(x/36e5)%24);document.getElementById('m').textContent=pad(Math.floor(x/6e4)%60);document.getElementById('s').textContent=pad(Math.floor(x/1e3)%60)}
+  tick();setInterval(tick,1000);
+
+  /* ---- reveals ---- */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  setTimeout(function(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})},9000);
+})();
+</script>
+</body>
+</html>
