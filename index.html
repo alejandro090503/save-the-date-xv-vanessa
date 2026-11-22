@@ -16,9 +16,9 @@
 <style>
 :root{
   --blush:#ffc3c2;--peach:#ffc5ab;--cream:#fff4e4;--pink:#ffa1dd;--rose:#ffd1c9;
-  --rg:#B76E79;--rg-hi:#f3c7c0;--rg-deep:#7e3f4a;--champ:#F7E7CE;--champ-deep:#c9a77a;
+  --rg:#B76E79;--silver:#C0C0C0;--blush2:#f9d3e0;--rg-hi:#f3c7c0;--rg-deep:#7e3f4a;--champ:#F7E7CE;--champ-deep:#c9a77a;
   --ink:#4e2430;--ink-soft:#6e3a47;--flora:#e0569a;--prim:#4f8fe0;
-  --metal:linear-gradient(100deg,#7e3f4a 0%,#c98a90 22%,#f6d5cc 40%,#B76E79 55%,#f3c7c0 70%,#8a4552 100%);
+  --metal:linear-gradient(100deg,#7e3f4a 0%,#c98a90 20%,#f9d3e0 36%,#C0C0C0 46%,#B76E79 56%,#f9d3e0 70%,#8a4552 100%);
   --champ-metal:linear-gradient(100deg,#a8835a,#f7e7ce 35%,#fffaf0 50%,#d9bf98 68%,#a8835a);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -328,7 +328,7 @@ footer a{color:var(--rg-deep);text-decoration:none}
   /* ---- chispas de hadas (rosa Flora / azul Primavera) ---- */
   var cv=document.getElementById('sparks'),cx=cv.getContext('2d'),P=[],dpr=Math.min(devicePixelRatio||1,2);
   function rs(){cv.width=innerWidth*dpr;cv.height=innerHeight*dpr}rs();addEventListener('resize',rs);
-  var COL={pk:['#ffa1dd','#ff7fc4','#ffd1e8','#f7e7ce'],bl:['#8fbaf2','#5fa0ff','#d8e9ff','#f7e7ce'],mix:['#ffa1dd','#8fbaf2','#f7e7ce','#ffd1c9']};
+  var COL={pk:['#ffa1dd','#ff7fc4','#ffd1e8','#f7e7ce'],bl:['#8fbaf2','#5fa0ff','#d8e9ff','#f7e7ce'],mix:['#ffa1dd','#8fbaf2','#f7e7ce','#C0C0C0']};
   function burst(x,y,n,pal){for(var i=0;i<n;i++){var a=Math.random()*6.283,v=1+Math.random()*4;P.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-1.5,l:1,s:1.5+Math.random()*3,c:COL[pal][i%4],st:Math.random()<.35})}}
   var ambient=0;
   function star(x,y,r){cx.beginPath();for(var i=0;i<8;i++){var rr=i%2?r*.38:r,a=i*Math.PI/4;cx.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}cx.closePath();cx.fill()}
@@ -375,7 +375,7 @@ footer a{color:var(--rg-deep);text-decoration:none}
   new IntersectionObserver(function(es,o){if(es[0].isIntersecting){goCal();o.disconnect()}},{threshold:0,rootMargin:'0px 0px -18% 0px'}).observe(document.querySelector('.cal .wrap'));
 
   /* ---- countdown ---- */
-  var T=new Date('2027-01-16T15:50:00-06:00').getTime();
+  var T=new Date('2027-01-16T15:30:00-06:00').getTime();
   function pad(n){return n<10?'0'+n:n}
   function tick(){var x=Math.max(0,T-Date.now());document.getElementById('d').textContent=Math.floor(x/864e5);document.getElementById('h').textContent=pad(Math.floor(x/36e5)%24);document.getElementById('m').textContent=pad(Math.floor(x/6e4)%60);document.getElementById('s').textContent=pad(Math.floor(x/1e3)%60)}
   tick();setInterval(tick,1000);
