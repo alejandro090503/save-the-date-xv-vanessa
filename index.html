@@ -177,7 +177,7 @@ section{position:relative;padding:min(15vh,130px) 22px;text-align:center;overflo
 .retrato{background:linear-gradient(180deg,#fdebe6,#fff4e4);padding-top:min(8vh,70px)}
 .retrato .arco{position:relative;width:min(78vw,330px);margin:26px auto 0;aspect-ratio:1/1.32;border-radius:999px 999px 18px 18px;padding:9px;
   background:var(--metal);background-size:220% 100%;animation:sweep 6s ease-in-out infinite;box-shadow:0 0 40px rgba(255,161,221,.45),0 20px 50px rgba(126,63,74,.2)}
-.retrato .arco>img:not(.cr){width:100%;height:100%;object-fit:cover;object-position:50% 30%;border-radius:990px 990px 10px 10px}
+.retrato .arco{overflow:hidden}.retrato .arco>img.ft{position:absolute;inset:9px;width:calc(100% - 18px);height:calc(100% - 18px);opacity:0;transition:opacity 1.8s ease,transform 8s ease;transform:scale(1.02)}.retrato .arco>img.ft.on{opacity:1;transform:scale(1.07)}.retrato .arco>img:not(.cr){object-fit:cover;object-position:50% 30%;border-radius:990px 990px 10px 10px}
 .retrato .arco .cr{position:absolute;top:-30px;left:50%;width:86px;margin-left:-43px;filter:drop-shadow(0 6px 8px rgba(126,63,74,.3));animation:swing 5s ease-in-out infinite;transform-origin:50% 100%}
 @keyframes zoomlento{to{transform:scale(1.06)}}
 .retrato .nm2{font-family:'Great Vibes',cursive;font-size:2.4rem;color:var(--rg);margin-top:22px}
@@ -259,7 +259,7 @@ footer a{color:var(--rg-deep);text-decoration:none}
   <section class="retrato">
     <div class="wrap rv">
       <div class="eyebrow">La quinceañera</div>
-      <div class="arco"><img src="vanessa-1.webp" alt="Vanessa Aileen con su corona" loading="eager"></div>
+      <div class="arco"><img class="ft on" src="vanessa-1.webp" alt="Vanessa Aileen con su corona"><img class="ft" src="vanessa-2.webp" alt="Vanessa Aileen con su corona y su pastel" style="object-position:40% 40%"></div>
       <div class="nm2">Vanessa Aileen</div>
     </div>
   </section>
@@ -390,6 +390,8 @@ footer a{color:var(--rg-deep);text-decoration:none}
   setInterval(function(){if(!ambient)return;var r=rq.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;
     for(var i=0;i<2;i++){var a=Math.random()*6.283,rad=r.width*(.42+Math.random()*.2);
       P.push({x:r.left+r.width/2+Math.cos(a)*rad*.8,y:r.top+r.height*.5+Math.sin(a)*rad,vx:(Math.random()-.5)*.5,vy:-(.5+Math.random()*1),l:1,s:1+Math.random()*2.4,c:['#ffffff','#ffa1dd','#ffd1e8','#f7e7ce'][(Math.random()*4)|0],st:Math.random()<.5,amb:1})}},140);
+
+  var fts=document.querySelectorAll('.ft'),fi=0;setInterval(function(){fts[fi].classList.remove('on');fi=(fi+1)%fts.length;fts[fi].classList.add('on')},5000);
 
   /* ---- reveals ---- */
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
