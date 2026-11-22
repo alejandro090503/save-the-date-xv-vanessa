@@ -173,6 +173,14 @@ section{position:relative;padding:min(15vh,130px) 22px;text-align:center;overflo
 .pronto{margin-top:34px;padding:18px 20px;border-top:1px solid rgba(183,110,121,.4);border-bottom:1px solid rgba(183,110,121,.4);font-family:'Jost',sans-serif;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.92rem;color:var(--ink)}
 .castillo-fin{width:min(60vw,260px);margin:34px auto 0;opacity:.95;animation:floaty 6s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(255,209,232,.8))}
 
+
+.retrato{background:linear-gradient(180deg,#fdebe6,#fff4e4);padding-top:min(8vh,70px)}
+.retrato .arco{position:relative;width:min(78vw,330px);margin:26px auto 0;aspect-ratio:1/1.32;border-radius:999px 999px 18px 18px;padding:9px;
+  background:var(--metal);background-size:220% 100%;animation:sweep 6s ease-in-out infinite;box-shadow:0 0 40px rgba(255,161,221,.45),0 20px 50px rgba(126,63,74,.2)}
+.retrato .arco>img:not(.cr){width:100%;height:100%;object-fit:cover;object-position:50% 30%;border-radius:990px 990px 10px 10px}
+.retrato .arco .cr{position:absolute;top:-30px;left:50%;width:86px;margin-left:-43px;filter:drop-shadow(0 6px 8px rgba(126,63,74,.3));animation:swing 5s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes zoomlento{to{transform:scale(1.06)}}
+.retrato .nm2{font-family:'Great Vibes',cursive;font-size:2.4rem;color:var(--rg);margin-top:22px}
 footer{padding:34px 20px 46px;text-align:center;background:#fde4e2;font-family:'Jost',sans-serif;font-weight:500;font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
 footer a{color:var(--rg-deep);text-decoration:none}
 
@@ -245,6 +253,14 @@ footer a{color:var(--rg-deep);text-decoration:none}
       <p class="drop">Como en los cuentos que leía de niña, llega el capítulo que tanto soñé. Las hadas ya preparan su magia, el castillo enciende sus luces y yo quiero que tú seas parte de esta historia.</p>
       <div class="firma">Vanessa Aileen</div>
       <div class="rueca-wrap" id="rueca"><img class="rueca" src="rueca.webp" alt=""></div>
+    </div>
+  </section>
+
+  <section class="retrato">
+    <div class="wrap rv">
+      <div class="eyebrow">La quinceañera</div>
+      <div class="arco"><img src="vanessa-1.webp" alt="Vanessa Aileen con su corona" loading="eager"></div>
+      <div class="nm2">Vanessa Aileen</div>
     </div>
   </section>
 
